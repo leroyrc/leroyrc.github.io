@@ -1,0 +1,97 @@
+<html>
+<head>
+	<title>Pedra-Papel-Tesoura</title>
+ <script>
+     alert("Para para inicar o jogo click no Ok");
+     alert("Regras: \n Escolha Sua Arma: \n Papel Ganha da Pedra e Perde pra Tesoura \n Pedra Ganha de Tesoura e Perde para \n Tesoura Ganha de Papel e Perde para Pedra");
+	 alert("Escolha sua jogada:")
+	 var countpc = 0;
+	 var countuser = 0 ;
+     var empate = 0;
+     var check = 2;
+     
+	function pedra(min , max){
+		var num = Math.random() * (max - min) + min;
+		if(num > 2){
+			alert("Voce escolheu pedra e ganhou de tesoura")
+			 check = 1;
+		}else if(num > 1){
+			alert("Voce escolheu pedra e empatou com pedra");
+			check = 2;
+		}else{
+			alert("Voce escolheu pedra e perdeu para papel")
+			check = 0;
+		}
+	}
+	function papel(min , max){
+		var num = Math.random() * (max - min) + min;
+		if(num > 2){
+			alert("Voce escolheu papel e perdeu para tesoura")
+			check = 0;
+		}else if(num > 1){
+			alert("Voce escolheu papel e ganhou de pedra")
+			check = 1;
+		}else{
+			alert("Voce escolheu papel e empatou com papel");
+			check = 2;
+		}
+	}
+	function tesoura(min , max){
+		var num = Math.random() * (max - min) + min;
+		if(num > 2){
+			alert("Voce escolheu tesoura e empatou com tesoura");
+			check = 2;
+		}else if(num > 1){
+			alert("Voce escolheu tesoura e perdeu para pedra");
+			check = 0;
+		}else{
+			alert("Voce escolheu tesoura e ganhou de papel")
+			 check = 1;
+		}
+	}
+
+     
+    function count(){
+        if(check == 0){
+            countpc++;
+            document.getElementById("contador-pc").innerHTML = countpc;
+        } else if(check == 1){
+            countuser++;
+            document.getElementById("contador-user").innerHTML = countuser;
+       }else if(check == 2){
+           empate++;
+           document.getElementById("contador-empate").innerHTML = empate;
+       }
+    }
+
+     console.log(countpc);
+	 
+ </script>
+</head>
+<body bgcolor="black">
+
+<div>
+<div align="center">
+<p>
+<h2>
+	<label style="color:white">Jogador</label>
+    <label style="color:white" id="contador-user">0</label>
+    <label style="color:white">Computador</label>
+    <label style="color:white" id="contador-pc">0</label>
+    <label style="color:white">Empate</label>
+    <label style="color:white" id="contador-empate">0</label>
+</h2>
+</p>
+</div>
+<div align="center">
+	<img src="papel.png" style="height:200px;"	onClick="papel(0,3);count();">
+</div>
+<div align="center">
+	<img src="tesoura.png" style="height:200px;"	onClick="tesoura(0,3);count();">
+</div>
+<div align="center">
+	<img src="pedra.png" style="height:200px;"	onClick="pedra(0,3);count();">
+</div>
+
+</body>
+</html>
